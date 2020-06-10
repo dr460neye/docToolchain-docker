@@ -20,4 +20,4 @@ jobs:
       run: docker build --tag doctoolchain:"$GITHUB_SHA" .
     - name: Publish
       run: |
-        docker push dr460neye/$IMAGE:$GITHUB_SHA
+        docker push dr460neye/doctoolchain:$GITHUB_SHA
