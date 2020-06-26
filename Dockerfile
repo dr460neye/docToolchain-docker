@@ -11,13 +11,11 @@ RUN echo "add needed tools" \
 
 COPY --from=pandoc/core:latest /usr/bin/pandoc* /usr/bin/
 
-RUN git clone https://github.com/docToolchain/docToolchain.git \
+RUN git clone -b ${TAG} --single-branch https://github.com/docToolchain/docToolchain.git \
     &&         cd docToolchain \
-    &&         git checkout ${TAG} \
-    &&         git submodule update -i \
     &&         ./gradlew tasks \
     &&         ./gradlew \
-    &&         PATH="/docToolchain/bin:${PATH}"
+    &&         PATH="/docToolchain/bin:${PATH}" \
 RUN mkdir /project
 WORKDIR /project
 ENTRYPOINT ["/bin/bash"]
