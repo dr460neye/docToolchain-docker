@@ -18,6 +18,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build --tag doctoolchain:"$GITHUB_SHA" .
+    - name: Check image
+      run: docker image ls -a
     - name: Publish
       run: |
         docker push dr460neye/doctoolchain:$GITHUB_SHA
